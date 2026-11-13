@@ -1436,7 +1436,6 @@
     "voice": {
       "cleanup": {
         "recipeDescription": "Clean up dictated text before it lands."
-
       }
     },
     "experimental": {}
