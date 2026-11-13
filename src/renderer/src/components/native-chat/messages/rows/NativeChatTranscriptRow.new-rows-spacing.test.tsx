@@ -127,7 +127,17 @@ describe('NativeChatTranscriptRow New line spacing', () => {
       ['-mb-3'],
       ['-mt-6']
     ],
-    ['above-turn-bar', user(), { text: 'Not sent' }, ['-mb-3'], ['-mt-6']]
+    ['above-turn-bar', user(), { text: 'Not sent' }, ['-mb-3'], ['-mt-6']],
+    ['above-turn-bar', user(), { sending: true }, ['-mb-3'], ['-mt-6']],
+    ['above-turn-bar', user({ timestamp: null }), undefined, ['-mb-3'], ['-mt-6']],
+    ['above-turn-bar', { ...user(), drawsMessage: false }, undefined, ['-mb-3'], ['-mt-6']],
+    [
+      'above-row',
+      slot({ statusAbove: true, status: { startedAt: 1, thinking: false, workedSeconds: null } }),
+      undefined,
+      ['-mb-3'],
+      ['-mt-6', '-mb-1.5']
+    ]
   ] as const)('spaces the line %s, case %#', (place, row, notice, has, lacks) => {
     const view = render(
       <NativeChatTranscriptRow
